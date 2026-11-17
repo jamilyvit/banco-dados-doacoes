@@ -1,0 +1,14 @@
+-- Cruza as infirmarções da Tabela oferta de alimentos com a tabela necessidades da cozinha:
+
+select 
+    e.nome_est as Mercado,
+    o.produto as Produto_Disponivel,
+    o.quantidade as Qtd_Oferta,
+    o.validade as Validade,
+    c.nome_coz as Cozinha_Precisa,
+    n.quantidade as Qtd_Necessaria,
+    n.data_limite as Data_Limite
+from Oferta_Alimento o
+inner join Estabelecimento e on o.id_est = e.id_est
+inner join Necessidade_Cozinha n on o.produto = n.produto
+inner join Cozinha c on n.id_coz = c.id_coz;

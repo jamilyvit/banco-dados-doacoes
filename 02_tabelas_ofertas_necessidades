@@ -1,0 +1,22 @@
+drop table if exists Oferta_Alimento;
+create table Oferta_Alimento
+(
+  id_oferta integer not null primary key autoincrement,
+  id_est integer not null,
+  produto varchar(50) not null,
+  quantidade integer not null, 
+  validade date not null,
+  motivo_descarte varchar(100),
+  foreign key (id_est) references Estabelecimento(id_est)
+);
+
+drop table if exists Necessidade_Cozinha;
+create table Necessidade_Cozinha
+(
+  id_necessidade integer not null primary key autoincrement,
+  id_coz integer not null,
+  produto varchar(50) not null,
+  quantidade integer not null,
+  data_limite date not null,
+  foreign key (id_coz) references Cozinha(id_coz)
+);

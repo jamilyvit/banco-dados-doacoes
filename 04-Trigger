@@ -1,0 +1,17 @@
+create table if not exists Log_Ofertas (
+    id_log integer primary key autoincrement,
+    mensagem text,
+    data_hora datetime default current_timestamp 
+);
+
+-- 2 Remove qualquer trigger antiga 
+drop trigger if exists trg_log_ofertas;
+
+-- 3. Cria a trigger 
+create trigger trg_log_ofertas
+after insert on Oferta_Alimento
+for each row
+begin
+    insert into Log_Ofertas (mensagem) 
+    values ('Nova oferta adicionada - ID Estabelecimento: ' || NEW.id_est || ' | Produto: ' || NEW.produto);
+end;

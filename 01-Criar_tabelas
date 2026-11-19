@@ -11,7 +11,7 @@ create table Estabelecimento
 
 PRAGMA foreign_keys = ON;
 
-PRAGMA foreign_keys = OFF;
+
 drop table if exists Necessidade_Cozinha;
 drop table if exists Cozinha;
 
@@ -22,4 +22,4 @@ create table Cozinha
   local varchar(50) not null
 );
 
-PRAGMA foreign_keys = ON;
+
